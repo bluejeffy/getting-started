@@ -28,7 +28,12 @@
             "Properties": 
             {
                 "InstanceType": { "Ref" : "InstanceType" },
-                "SecurityGroups":[ "docker-machine" ],
+                "SecurityGroups": 
+                [
+                    {
+                        "Ref": "InstanceSecurityGroup"
+                    }
+                ],
                 "KeyName": 
                 {
                     "Ref": "KeyName"
@@ -46,7 +51,9 @@
                 [
                     {"IpProtocol": "tcp", "FromPort": "22", "ToPort": "22", "CidrIp": "0.0.0.0/0"},
                     {"IpProtocol": "tcp", "FromPort": "80", "ToPort": "80", "CidrIp": "0.0.0.0/0"},
-                    {"IpProtocol": "tcp", "FromPort": "2376", "ToPort": "2376", "CidrIp": "0.0.0.0/0"}
+                    {"IpProtocol": "tcp", "FromPort": "2376", "ToPort": "2376", "CidrIp": "0.0.0.0/0"},
+                    {"IpProtocol": "tcp", "FromPort": "2375", "ToPort": "2375", "CidrIp": "0.0.0.0/0"},
+                    {"IpProtocol": "tcp", "FromPort": "2377", "ToPort": "2377", "CidrIp": "0.0.0.0/0"}
                 ]
             }
         }
