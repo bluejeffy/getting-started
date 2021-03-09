@@ -16,8 +16,7 @@
         },
         "UbuntuId" : 
         {
-          "Type" : "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
-          "Default" : "ami-2378f540"
+          "Default" : "ami-05b891753d41ff88f"
         }
     },
     "Resources" : 
@@ -50,7 +49,8 @@
                 "SecurityGroupIngress": 
                 [
                     {"IpProtocol": "tcp", "FromPort": "22", "ToPort": "22", "CidrIp": "0.0.0.0/0"},
-                    {"IpProtocol": "tcp", "FromPort": "80", "ToPort": "80", "CidrIp": "0.0.0.0/0"}
+                    {"IpProtocol": "tcp", "FromPort": "80", "ToPort": "80", "CidrIp": "0.0.0.0/0"},
+                    {"IpProtocol": "tcp", "FromPort": "2376", "ToPort": "2376", "CidrIp": "0.0.0.0/0"}
                 ]
             }
         }
