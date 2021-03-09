@@ -28,12 +28,7 @@
             "Properties": 
             {
                 "InstanceType": { "Ref" : "InstanceType" },
-                "SecurityGroups": 
-                [
-                    {
-                        "Ref": "InstanceSecurityGroup"
-                    }
-                ],
+                "SecurityGroups":[ "docker-machine" ],
                 "KeyName": 
                 {
                     "Ref": "KeyName"
