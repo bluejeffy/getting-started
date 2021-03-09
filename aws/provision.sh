@@ -27,15 +27,15 @@ sleep 300
 # Get IP
 INSTANCE_ID=$($aws cloudformation describe-stack-resource\
     --stack-name "${STACK_NAME}" \
-    --logical-resource-id DockerHost | \
-    python -c "import sys, json; print(json.load(sys.stdin)['StackResourceDetail']['PhysicalResourceId'])")
+    --logical-resource-id Ec2Instance | \
+    python3 -c "import sys, json; print(json.load(sys.stdin)['StackResourceDetail']['PhysicalResourceId'])")
 IP_ADDRESS=$($aws ec2 describe-instances --instance-ids="$INSTANCE_ID" | \
-    python -c "import sys, json; print(json.load(sys.stdin)['Reservations'][0]['Instances'][0]['PublicIpAddress'])")
+    python3 -c "import sys, json; print(json.load(sys.stdin)['Reservations'][0]['Instances'][0]['PublicIpAddress'])")
 
 docker-machine create \
                --driver generic \
                --generic-ip-address="$IP_ADDRESS" \
-               --generic-ssh-key deploy/"${STACK_NAME}"/certs/"${STACK_NAME}"-key \
+               --generic-ssh-key /root/.aws/free_tier.pem \
                --generic-ssh-user ubuntu \
                "${STACK_NAME}"
 
