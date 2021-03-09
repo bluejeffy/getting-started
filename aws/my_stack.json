@@ -16,6 +16,7 @@
         },
         "UbuntuId" : 
         {
+           "Type" : "String",
           "Default" : "ami-05b891753d41ff88f"
         }
     },
